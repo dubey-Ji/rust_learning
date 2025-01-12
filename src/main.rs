@@ -31,26 +31,48 @@
 //     return second_num;
 // }
 
-struct Rect {
-    width: u32,
-    height: u32,
-}
+// struct Rect {
+//     width: u32,
+//     height: u32,
+// }
 
-impl Rect {
-    fn area(&self) -> u32 {
-        return self.width * self.height;
-    }
+// impl Rect {
+//     fn area(&self) -> u32 {
+//         return self.width * self.height;
+//     }
 
-    fn debug() -> u32 {
-        return 1;
-    }
+//     fn debug() -> u32 {
+//         return 1;
+//     }
+// }
+
+// fn main() {
+//     let rect = Rect {
+//         width: 10,
+//         height: 20,
+//     };
+//     print!("Area of the rectangle is {}\n", rect.area());
+//     print!("Debug functin {}", Rect::debug());
+// }
+
+// Enum
+
+enum Shape {
+    Rectangle(f64, f64), // width, height
+    Circle(f64),         // radius
 }
 
 fn main() {
-    let rect = Rect {
-        width: 10,
-        height: 20,
-    };
-    print!("Area of the rectangle is {}\n", rect.area());
-    print!("Debug functin {}", Rect::debug());
+    let rect = Shape::Rectangle(1.2, 3.2);
+    let circle = Shape::Circle(4.0);
+    print!("Area of rectangle {}", calculate_area(rect));
+    print!("\n");
+    print!("Area of circle {}", calculate_area(circle));
+}
+
+fn calculate_area(shape: Shape) -> f64 {
+    match shape {
+        Shape::Rectangle(a, b) => a * b,
+        Shape::Circle(r) => 3.14 * r * r,
+    }
 }
