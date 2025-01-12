@@ -57,22 +57,41 @@
 
 // Enum
 
-enum Shape {
-    Rectangle(f64, f64), // width, height
-    Circle(f64),         // radius
-}
+// enum Shape {
+//     Rectangle(f64, f64), // width, height
+//     Circle(f64),         // radius
+// }
+
+// fn main() {
+//     let rect = Shape::Rectangle(1.2, 3.2);
+//     let circle = Shape::Circle(4.0);
+//     print!("Area of rectangle {}", calculate_area(rect));
+//     print!("\n");
+//     print!("Area of circle {}", calculate_area(circle));
+// }
+
+// fn calculate_area(shape: Shape) -> f64 {
+//     match shape {
+//         Shape::Rectangle(a, b) => a * b,
+//         Shape::Circle(r) => 3.14 * r * r,
+//     }
+// }
+
+// Options
 
 fn main() {
-    let rect = Shape::Rectangle(1.2, 3.2);
-    let circle = Shape::Circle(4.0);
-    print!("Area of rectangle {}", calculate_area(rect));
-    print!("\n");
-    print!("Area of circle {}", calculate_area(circle));
+    let index_of_a = first_char_a(String::from("manavi"));
+    match index_of_a {
+        Some(index) => print!("Index of a is {}", index),
+        None => print!("a not found"),
+    }
 }
 
-fn calculate_area(shape: Shape) -> f64 {
-    match shape {
-        Shape::Rectangle(a, b) => a * b,
-        Shape::Circle(r) => 3.14 * r * r,
+fn first_char_a(str: String) -> Option<i32> {
+    for (index, character) in str.chars().enumerate() {
+        if character == 'a' {
+            return Some(index as i32);
+        }
     }
+    return None;
 }
