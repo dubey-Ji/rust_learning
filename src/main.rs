@@ -97,16 +97,47 @@
 // }
 
 // Results enum (inbuild)
-use std::fs::read_to_string;
+// use std::fs::read_to_string;
 
-fn main() {
-    let file_data = read_to_string("src/a.txt");
-    match file_data {
-        Ok(data) => println!("Data of file is {}", data),
-        Err(err) => println!("Error occured {}", err),
-    }
-}
+// fn main() {
+//     let file_data = read_to_string("src/a.txt");
+//     match file_data {
+//         Ok(data) => println!("Data of file is {}", data),
+//         Err(err) => println!("Error occured {}", err),
+//     }
+// }
+
+// fn main() {
+//     let file_data = read_to_string("src/a.txt");
+//     match file_data {
+//         Ok(data) => println!("Data of file is {}", data),
+//         Err(err) => println!("Error occured {}", err),
+//     }
+// }
 
 // fn read_file() -> Result {
 
 // }
+
+// Vector
+fn main() {
+    let mut vec = Vec::new();
+
+    vec.push(1);
+    vec.push(2);
+    vec.push(3);
+    println!("{:?}", calculate_even_vec(&vec));
+    print!("{:?}", vec);
+}
+
+// create a function that takes a vector as an input and returns a vector with even value
+
+fn calculate_even_vec(vec: &Vec<i32>) -> Vec<i32> {
+    let mut new_vec: Vec<i32> = Vec::new();
+    for val in vec {
+        if val % 2 == 0 {
+            new_vec.push(*val);
+        }
+    }
+    return new_vec;
+}
