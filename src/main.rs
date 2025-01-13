@@ -79,19 +79,34 @@
 
 // Options
 
+// fn main() {
+//     let index_of_a = first_char_a(String::from("manavi"));
+//     match index_of_a {
+//         Some(index) => print!("Index of a is {}", index),
+//         None => print!("a not found"),
+//     }
+// }
+
+// fn first_char_a(str: String) -> Option<i32> {
+//     for (index, character) in str.chars().enumerate() {
+//         if character == 'a' {
+//             return Some(index as i32);
+//         }
+//     }
+//     return None;
+// }
+
+// Results enum (inbuild)
+use std::fs::read_to_string;
+
 fn main() {
-    let index_of_a = first_char_a(String::from("manavi"));
-    match index_of_a {
-        Some(index) => print!("Index of a is {}", index),
-        None => print!("a not found"),
+    let file_data = read_to_string("src/a.txt");
+    match file_data {
+        Ok(data) => println!("Data of file is {}", data),
+        Err(err) => println!("Error occured {}", err),
     }
 }
 
-fn first_char_a(str: String) -> Option<i32> {
-    for (index, character) in str.chars().enumerate() {
-        if character == 'a' {
-            return Some(index as i32);
-        }
-    }
-    return None;
-}
+// fn read_file() -> Result {
+
+// }
