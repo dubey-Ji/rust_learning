@@ -206,25 +206,34 @@
 // }
 
 // Consuming adapter and Iterator adaptor
+// fn main() {
+//     let vec = vec![1, 2, 3];
+
+//     let vec_itr = vec.iter();
+
+//     let itr = vec_itr.map(|x| x + 1);
+
+//     for x in itr {
+//         println!("{}", x);
+//     }
+
+// println!("{:?}", vec_itr);
+// let total: i32 = vec_itr.sum(); // .sum() method consume the vec_itr you can't use again vec_itr
+
+// println!("{}", total);
+
+// println!("{:?}", vec);
+
+// if you uncomment below line it will give error as vec_itr has been consumed on line 214, but
+// you can use vec again
+// println!("{:?}", vec_itr);
+// }
+
+// write the logic to first filter all odd values then double each value and create a new vector
 fn main() {
-    let vec = vec![1, 2, 3];
-
-    let vec_itr = vec.iter();
-
-    let itr = vec_itr.map(|x| x + 1);
-
-    for x in itr {
-        println!("{}", x);
+    let vec = vec![1, 2, 3, 4, 5];
+    let even_vec = vec.iter().filter(|x| *x % 2 == 0).map(|x| *x * 2);
+    for val in even_vec {
+        println!("{}", val);
     }
-
-    // println!("{:?}", vec_itr);
-    // let total: i32 = vec_itr.sum(); // .sum() method consume the vec_itr you can't use again vec_itr
-
-    // println!("{}", total);
-
-    // println!("{:?}", vec);
-
-    // if you uncomment below line it will give error as vec_itr has been consumed on line 214, but
-    // you can use vec again
-    // println!("{:?}", vec_itr);
 }
