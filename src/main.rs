@@ -120,24 +120,43 @@
 // }
 
 // Vector
-fn main() {
-    let mut vec = Vec::new();
+// fn main() {
+//     let mut vec = Vec::new();
 
-    vec.push(1);
-    vec.push(2);
-    vec.push(3);
-    println!("{:?}", calculate_even_vec(&vec));
-    print!("{:?}", vec);
+//     vec.push(1);
+//     vec.push(2);
+//     vec.push(3);
+//     println!("{:?}", calculate_even_vec(&vec));
+//     print!("{:?}", vec);
+// }
+
+// // create a function that takes a vector as an input and returns a vector with even value
+
+// fn calculate_even_vec(vec: &Vec<i32>) -> Vec<i32> {
+//     let mut new_vec: Vec<i32> = Vec::new();
+//     for val in vec {
+//         if val % 2 == 0 {
+//             new_vec.push(*val);
+//         }
+//     }
+//     return new_vec;
+// }
+
+// Hashmaps
+use ::std::collections::HashMap;
+
+fn main() {
+    // Create a vector with a tuple value
+    let mut vec: Vec<(String, i32)> = Vec::new();
+    vec.push((String::from("Ashutosh"), 22));
+    vec.push((String::from("Manavi"), 21));
+    println!("{:?}", group_values_by_keys(&vec));
 }
 
-// create a function that takes a vector as an input and returns a vector with even value
-
-fn calculate_even_vec(vec: &Vec<i32>) -> Vec<i32> {
-    let mut new_vec: Vec<i32> = Vec::new();
-    for val in vec {
-        if val % 2 == 0 {
-            new_vec.push(*val);
-        }
+fn group_values_by_keys(input_vec: &Vec<(String, i32)>) -> HashMap<String, i32> {
+    let mut hm = HashMap::new();
+    for (key, value) in input_vec {
+        hm.insert(key.clone(), *value);
     }
-    return new_vec;
+    return hm;
 }
