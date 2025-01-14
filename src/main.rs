@@ -232,8 +232,10 @@
 // write the logic to first filter all odd values then double each value and create a new vector
 fn main() {
     let vec = vec![1, 2, 3, 4, 5];
+    // even_vec is an iterator vector
     let even_vec = vec.iter().filter(|x| *x % 2 == 0).map(|x| *x * 2);
-    for val in even_vec {
-        println!("{}", val);
-    }
+
+    let new_vec: Vec<i32> = even_vec.collect();
+    println!("{:?}", vec);
+    println!("{:?}", new_vec);
 }
