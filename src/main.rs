@@ -163,44 +163,68 @@
 
 // Iterator
 
+// fn main() {
+//     let vec = vec![1, 2, 3];
+
+// Type 1: Simple
+// for val in vec {
+//     println!("{}", val);
+// }
+
+// Type 2: .iter() it is borrowing
+// let vec_itr = vec.iter();
+// for val in vec_itr {
+//     println!("{}", val);
+// }
+
+// Type 3: .iter_mut() in this we can change the value, to do this variable should also
+// be mutable
+// let vec_itr = vec.iter_mut();
+// for val in vec_itr {
+//     *val = *val + 1;
+//     println!("{}", val);
+// }
+
+// Type 4: while loop .next(), in this vec_itr should be mutable and the variable vec should not be mutable
+// let mut vec_itr = vec.iter();
+// while let Some(val) = vec_itr.next() {
+//     // .next() returs Options<Some, None> if none occurs the while loop breaks
+//     println!("{}", val);
+// }
+
+// Type 5: .into_iter() in this the ownership is transferred to the vec_iter of vec, vec variable
+// will not be usable anymore
+// let vec_iter = vec.into_iter();
+// for val in vec_iter {
+//     println!("{}", val);
+// }
+
+// This is same as .into_iter()
+// for val in vec {
+//     println!("{}", val);
+// }
+// }
+
+// Consuming adapter and Iterator adaptor
 fn main() {
     let vec = vec![1, 2, 3];
 
-    // Type 1: Simple
-    // for val in vec {
-    //     println!("{}", val);
-    // }
+    let vec_itr = vec.iter();
 
-    // Type 2: .iter() it is borrowing
-    // let vec_itr = vec.iter();
-    // for val in vec_itr {
-    //     println!("{}", val);
-    // }
+    let itr = vec_itr.map(|x| x + 1);
 
-    // Type 3: .iter_mut() in this we can change the value, to do this variable should also
-    // be mutable
-    // let vec_itr = vec.iter_mut();
-    // for val in vec_itr {
-    //     *val = *val + 1;
-    //     println!("{}", val);
-    // }
-
-    // Type 4: while loop .next(), in this vec_itr should be mutable and the variable vec should not be mutable
-    // let mut vec_itr = vec.iter();
-    // while let Some(val) = vec_itr.next() {
-    //     // .next() returs Options<Some, None> if none occurs the while loop breaks
-    //     println!("{}", val);
-    // }
-
-    // Type 5: .into_iter() in this the ownership is transferred to the vec_iter of vec, vec variable
-    // will not be usable anymore
-    // let vec_iter = vec.into_iter();
-    // for val in vec_iter {
-    //     println!("{}", val);
-    // }
-
-    // This is same as .into_iter()
-    for val in vec {
-        println!("{}", val);
+    for x in itr {
+        println!("{}", x);
     }
+
+    // println!("{:?}", vec_itr);
+    // let total: i32 = vec_itr.sum(); // .sum() method consume the vec_itr you can't use again vec_itr
+
+    // println!("{}", total);
+
+    // println!("{:?}", vec);
+
+    // if you uncomment below line it will give error as vec_itr has been consumed on line 214, but
+    // you can use vec again
+    // println!("{:?}", vec_itr);
 }
