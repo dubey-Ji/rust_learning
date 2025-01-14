@@ -143,20 +143,64 @@
 // }
 
 // Hashmaps
-use ::std::collections::HashMap;
+// use ::std::collections::HashMap;
+
+// fn main() {
+//     // Create a vector with a tuple value
+//     let mut vec: Vec<(String, i32)> = Vec::new();
+//     vec.push((String::from("Ashutosh"), 22));
+//     vec.push((String::from("Manavi"), 21));
+//     println!("{:?}", group_values_by_keys(&vec));
+// }
+
+// fn group_values_by_keys(input_vec: &Vec<(String, i32)>) -> HashMap<String, i32> {
+//     let mut hm = HashMap::new();
+//     for (key, value) in input_vec {
+//         hm.insert(key.clone(), *value);
+//     }
+//     return hm;
+// }
+
+// Iterator
 
 fn main() {
-    // Create a vector with a tuple value
-    let mut vec: Vec<(String, i32)> = Vec::new();
-    vec.push((String::from("Ashutosh"), 22));
-    vec.push((String::from("Manavi"), 21));
-    println!("{:?}", group_values_by_keys(&vec));
-}
+    let vec = vec![1, 2, 3];
 
-fn group_values_by_keys(input_vec: &Vec<(String, i32)>) -> HashMap<String, i32> {
-    let mut hm = HashMap::new();
-    for (key, value) in input_vec {
-        hm.insert(key.clone(), *value);
+    // Type 1: Simple
+    // for val in vec {
+    //     println!("{}", val);
+    // }
+
+    // Type 2: .iter() it is borrowing
+    // let vec_itr = vec.iter();
+    // for val in vec_itr {
+    //     println!("{}", val);
+    // }
+
+    // Type 3: .iter_mut() in this we can change the value, to do this variable should also
+    // be mutable
+    // let vec_itr = vec.iter_mut();
+    // for val in vec_itr {
+    //     *val = *val + 1;
+    //     println!("{}", val);
+    // }
+
+    // Type 4: while loop .next(), in this vec_itr should be mutable and the variable vec should not be mutable
+    // let mut vec_itr = vec.iter();
+    // while let Some(val) = vec_itr.next() {
+    //     // .next() returs Options<Some, None> if none occurs the while loop breaks
+    //     println!("{}", val);
+    // }
+
+    // Type 5: .into_iter() in this the ownership is transferred to the vec_iter of vec, vec variable
+    // will not be usable anymore
+    // let vec_iter = vec.into_iter();
+    // for val in vec_iter {
+    //     println!("{}", val);
+    // }
+
+    // This is same as .into_iter()
+    for val in vec {
+        println!("{}", val);
     }
-    return hm;
 }
